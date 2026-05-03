@@ -65,7 +65,7 @@ let currentSelectedTaste = 0;
 let currentSelectedHygiene = 50;
 
 // Backend API URL
-const API_BASE_URL = 'https://stadiumbites.onrender.com/';
+const API_BASE_URL = 'https://stadiumbites.onrender.com';
 
 // Initialize Application
 function init() {
