@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StadiumBites - AI Core</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-microchip"></i>
+            <span>StadiumBites <span class="ai-badge">AI CORE</span></span>
+        </div>
+        <div class="live-indicator">
+            <span class="dot"></span>
+            Live
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <!-- The Stadium Brain (Global Dashboard) -->
+        <section class="stadium-brain-section">
+            <div class="brain-header">
+                <h2><i class="fa-solid fa-brain glowing-icon"></i> Stadium Brain Live Intel</h2>
+            </div>
+            <div class="brain-content">
+                <p id="global-insight-text">Initializing AI Core... scanning stadium logistics...</p>
+                <div class="scanline"></div>
+            </div>
+        </section>
+
+        <!-- Live Food Feed -->
+        <section class="trending-section">
+            <div class="section-header">
+                <h2>Live Food Feed</h2>
+            </div>
+            <div class="trending-grid" id="trending-grid">
+                <!-- Items injected by JS -->
+            </div>
+        </section>
+
+        <!-- Template for Food Cards -->
+        <template id="food-card-template">
+            <div class="food-card">
+                <div class="card-image-container">
+                    <img src="" alt="Food item" class="food-image">
+                    <div class="freshness-tag"><i class="fa-solid fa-fire"></i> <span>Freshly Popped</span></div>
+                </div>
+                <div class="food-info">
+                    <div class="card-header-row">
+                        <h3 class="food-title">Item Name</h3>
+                        <div class="wait-time-badge"><i class="fa-solid fa-clock"></i> <span class="time-text">5m</span></div>
+                    </div>
+                    <p class="food-vendor">Vendor Name</p>
+
+                    <div class="food-rating-metrics">
+                        <div class="metric taste-metric">
+                            <i class="fa-solid fa-star star-color"></i>
+                            <span class="taste-score">4.5</span>
+                        </div>
+                        <div class="metric hygiene-metric">
+                            <i class="fa-solid fa-shield-halved shield-color"></i>
+                            <span class="hygiene-score">98%</span>
+                        </div>
+                    </div>
+                    <button class="rate-btn">Rate Item</button>
+                </div>
+            </div>
+        </template>
+    </main>
+
+    <!-- Rating Modal -->
+    <div class="modal-overlay" id="rating-modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <img id="modal-image" src="" alt="Food item">
+                <h3 id="modal-title">Item Name</h3>
+                <p id="modal-vendor">Vendor Name</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="rating-input-section">
+                    <h4>Food Taste (<span id="taste-value-display">0</span>/5)</h4>
+                    <div class="stars-container" id="stars-container">
+                        <i class="fa-regular fa-star star-rate" data-value="1"></i>
+                        <i class="fa-regular fa-star star-rate" data-value="2"></i>
+                        <i class="fa-regular fa-star star-rate" data-value="3"></i>
+                        <i class="fa-regular fa-star star-rate" data-value="4"></i>
+                        <i class="fa-regular fa-star star-rate" data-value="5"></i>
+                    </div>
+                </div>
+
+                <div class="rating-input-section hygiene-section">
+                    <h4>Cleanliness Vibe (<span id="hygiene-value-display">50</span>%)</h4>
+                    <div class="shield-container">
+                        <i class="fa-solid fa-shield shield-icon" id="hygiene-shield"></i>
+                        <input type="range" id="hygiene-slider" min="0" max="100" value="50" class="hygiene-slider">
+                    </div>
+                </div>
+
+                <button class="submit-btn" id="submit-rating" disabled>Submit Rating</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat FAB (Floating Action Button) -->
+    <div class="fab-container">
+        <button class="ai-fab" id="open-chat-btn">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+    </div>
+
+    <!-- AI Chat Panel -->
+    <div class="chat-panel" id="chat-panel">
+        <div class="chat-header">
+            <h3><i class="fa-solid fa-robot"></i> Ask Agent</h3>
+            <button id="close-chat-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-message bot">
+                Hi! Ask me what to eat based on live wait times and ratings!
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="e.g., Shortest line right now?">
+            <button id="send-chat-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">Database synced successfully!</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
